@@ -106,7 +106,6 @@
     color: #333;
     border: 1px solid #ccc;
   }
-  /* Login modal styles */
   #loginModal {
     position: fixed;
     top: 0; left: 0; right:0; bottom: 0;
@@ -217,12 +216,17 @@
 
 <script>
 const otcPairs = [
-  "AUD/CAD (OTC)","AUD/CHF (OTC)","AUD/JPY (OTC)","AUD/NZD (OTC)","AUD/USD (OTC)",
-  "CAD/CHF (OTC)","CAD/JPY (OTC)","CHF/JPY (OTC)","EUR/AUD (OTC)","EUR/CAD (OTC)",
-  "EUR/CHF (OTC)","EUR/GBP (OTC)","EUR/JPY (OTC)","EUR/NZD (OTC)","EUR/USD (OTC)",
-  "GBP/AUD (OTC)","GBP/CAD (OTC)","GBP/CHF (OTC)","GBP/JPY (OTC)","GBP/NZD (OTC)",
-  "GBP/USD (OTC)","NZD/CAD (OTC)","NZD/CHF (OTC)","NZD/JPY (OTC)","NZD/USD (OTC)",
-  "USD/CAD (OTC)","USD/CHF (OTC)","USD/JPY (OTC)"
+  "AUD/CAD (OTC)", "AUD/CHF (OTC)", "AUD/JPY (OTC)", "AUD/NZD (OTC)", "AUD/USD (OTC)",
+  "CAD/CHF (OTC)", "CAD/JPY (OTC)", "CHF/JPY (OTC)", "EUR/AUD (OTC)", "EUR/CAD (OTC)",
+  "EUR/CHF (OTC)", "EUR/GBP (OTC)", "EUR/JPY (OTC)", "EUR/NZD (OTC)", "EUR/USD (OTC)",
+  "GBP/AUD (OTC)", "GBP/CAD (OTC)", "GBP/CHF (OTC)", "GBP/JPY (OTC)", "GBP/NZD (OTC)",
+  "GBP/USD (OTC)", "NZD/CAD (OTC)", "NZD/CHF (OTC)", "NZD/JPY (OTC)", "NZD/USD (OTC)",
+  "USD/CAD (OTC)", "USD/CHF (OTC)", "USD/JPY (OTC)",
+
+  // ✅ Newly added OTC pairs
+  "USD/BRL (OTC)", "USD/PKR (OTC)", "USD/ARS (OTC)", "USD/TRY (OTC)", "EUR/SGD (OTC)",
+  "USD/INR (OTC)", "USD/COP (OTC)", "USD/EGP (OTC)", "USD/PHP (OTC)", "USD/BDT (OTC)",
+  "USD/NGN (OTC)", "USD/DZD (OTC)", "USD/IDR (OTC)", "USD/MXN (OTC)", "USD/ZAR (OTC)"
 ];
 
 const realPairs = [
@@ -302,21 +306,18 @@ document.getElementById('generate').onclick = () => {
   output.textContent = out;
 };
 
-// Copy to clipboard
 document.getElementById('copy').onclick = () => {
   navigator.clipboard.writeText(output.textContent)
     .then(()=>alert('✅ Signals copied!'))
     .catch(()=>alert('Copy failed!'));
 };
 
-// Reset signals and form
 document.getElementById('reset').onclick = () => {
   output.textContent = '';
   document.getElementById('signal-count').value = 10;
   document.getElementById('timeframe-select').value = '1';
   marketTypeSelect.value = 'otc-random';
   handleMarketChange();
-  // Uncheck all if custom
   pairContainer.querySelectorAll('input:checked').forEach(cb=>cb.checked=false);
 };
 
@@ -339,7 +340,6 @@ loginBtn.addEventListener('click', () => {
   }
 });
 
-// Allow enter key to submit password
 loginPassword.addEventListener('keypress', e => {
   if(e.key === 'Enter'){
     loginBtn.click();
