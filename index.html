@@ -222,8 +222,6 @@ const otcPairs = [
   "GBP/AUD (OTC)", "GBP/CAD (OTC)", "GBP/CHF (OTC)", "GBP/JPY (OTC)", "GBP/NZD (OTC)",
   "GBP/USD (OTC)", "NZD/CAD (OTC)", "NZD/CHF (OTC)", "NZD/JPY (OTC)", "NZD/USD (OTC)",
   "USD/CAD (OTC)", "USD/CHF (OTC)", "USD/JPY (OTC)",
-
-  // ✅ Newly added OTC pairs
   "USD/BRL (OTC)", "USD/PKR (OTC)", "USD/ARS (OTC)", "USD/TRY (OTC)", "EUR/SGD (OTC)",
   "USD/INR (OTC)", "USD/COP (OTC)", "USD/EGP (OTC)", "USD/PHP (OTC)", "USD/BDT (OTC)",
   "USD/NGN (OTC)", "USD/DZD (OTC)", "USD/IDR (OTC)", "USD/MXN (OTC)", "USD/ZAR (OTC)"
@@ -297,12 +295,13 @@ document.getElementById('generate').onclick = () => {
   let out = `♧ 𝗔𝗜 𝗦𝗜𝗚𝗡𝗔𝗟 – ${tf} 𝗠𝗶𝗻𝘂𝘁𝗲 𝗧𝗿𝗮𝗱𝗲\n✘ 𝟭 𝗦𝘁𝗲𝗽 𝗠𝗧𝗚 | ⏰ 𝗨𝗧𝗖 +𝟬𝟲:𝟬𝟬 ✘\n\n╔════ ≪•◦ ❈ ◦•≫ ════╗\n🧠 Opposite Candle Strategy:\nযে সময় উল্লেখ আছে তার আগের ক্যান্ডেল যা হবে, তার বিপরীতে ট্রেড নিন ❤️\n╚════ ≪•◦ ❈ ◦•≫ ════╝\n\n`;
 
   for(let i=0;i<count;i++){
-    base = new Date(base.getTime() + (Math.floor(Math.random()*5)+1)*60000);
-    const pair = pairList[Math.floor(Math.random()*pairList.length)];
+    base = new Date(base.getTime() + (Math.floor(Math.random() * 5) + 6) * 60000);
+    const pair = pairList[Math.floor(Math.random() * pairList.length)];
     out += `➤ ${formatTime(base)} – ${pair}\n`;
   }
 
-  out += `\n🛡 Trade Smart. Stay Disciplined.`;
+  out += `\n❌ ছোট ক্যান্ডেল দেখলে সিগন্যাল এভয়েড করুন\n❌ মার্কেটে একই রঙের ক্যান্ডেল বেশি থাকলে, সিগন্যাল লিস্ট এভয়েড করুন`;
+
   output.textContent = out;
 };
 
@@ -322,7 +321,7 @@ document.getElementById('reset').onclick = () => {
 };
 
 // LOGIN SYSTEM
-const CORRECT_PASSWORD = "@Ai100";
+const CORRECT_PASSWORD = "@ai200";
 const loginModal = document.getElementById('loginModal');
 const loginBtn = document.getElementById('loginBtn');
 const loginPassword = document.getElementById('loginPassword');
